@@ -1,0 +1,1 @@
+window.myGlobal = window.myGlobal||{};
