@@ -3,9 +3,9 @@ var path = require('path');
 var crypto = require('crypto');
 
 var manifest = {
-    packageUrl: 'http://192.168.0.102:8000/hotUpdate/remote-assets/',
-    remoteManifestUrl: 'http://192.168.0.102:8000/hotUpdate/remote-assets/project.manifest',
-    remoteVersionUrl: 'http://192.168.0.102:8000/hotUpdate/remote-assets/version.manifest',
+    packageUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/',
+    remoteManifestUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/project.manifest',
+    remoteVersionUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/version.manifest',
     version: '1.0.0',
     assets: {},
     searchPaths: []
