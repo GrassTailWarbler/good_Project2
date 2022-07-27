@@ -20,7 +20,7 @@ cc.Class({
         choos_label:{
             default:null,
             type:cc.Label
-        }
+        },
         
         
     },
@@ -76,8 +76,10 @@ cc.Class({
         }
     },
     onRestart:function(){
-        cc.game.restart();
+        //cc.game.restart();
         //cc.director.loadScene("third");
+       
+        myGlobal.popupDlg.onShow("网络超时");
     }
 
 });
