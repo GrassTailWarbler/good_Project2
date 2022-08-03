@@ -1,5 +1,5 @@
 const effect2_opit =require("../common/effect2_opit");
-var popupDlg= cc.Class({
+cc.Class({
 	extends: cc.Component,
 
 	properties: {
@@ -18,7 +18,6 @@ var popupDlg= cc.Class({
 			type: cc.Node,
 			displayName: "菜单"
 		},
-		//effect:effect2_opit
 	},
 
 	ctor: function () {
@@ -120,4 +119,3 @@ var popupDlg= cc.Class({
 
 	// },
 });
-module.exports = popupDlg;

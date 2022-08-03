@@ -1,4 +1,4 @@
-module.exports = cc.Class({
+cc.Class({
     extends: cc.Component,
 
     properties: {
@@ -11,6 +11,9 @@ module.exports = cc.Class({
         checkBtn: cc.Node,
         retryBtn: cc.Node,
         updateBtn: cc.Node
+    },
+    ctor(){
+        myGlobal.UpdatePanel = this;
     },
     
     onLoad () {

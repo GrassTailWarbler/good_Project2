@@ -1,4 +1,4 @@
-//const popupDlg = require("../tanchuang/Public/Script/prefab/common/popupDlg");
+
 cc.Class({
     extends: cc.Component,
 

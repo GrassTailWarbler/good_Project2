@@ -1,4 +1,4 @@
-var UpdatePanel = require('../UI/UpdatePanel');
+//var UpdatePanel = require('../UI/UpdatePanel');
 
 // Custom manifest removed the following assets:
 // 1. res/raw-assets/2a/2a40e5e7-4c4a-4350-9e5d-76757755cdd2.png
@@ -10,7 +10,7 @@ cc.Class({
     extends: cc.Component,
 
     properties: {
-        panel: UpdatePanel,
+        //panel: myGlobal.UpdatePanel,
         manifestUrl: {
             type: cc.Asset,
             default: null
@@ -22,7 +22,7 @@ cc.Class({
     },
 
     checkCb: function (event) {
-        cc.log('Code: ' + event.getEventCode());
+        //cc.log('Code: ' + event.getEventCode());
         switch (event.getEventCode())
         {
             case jsb.EventAssetsManager.ERROR_NO_LOCAL_MANIFEST:
@@ -64,7 +64,7 @@ cc.Class({
                 this.panel.fileProgress.progress = event.getPercentByFile();
 
                 this.panel.fileLabel.string = event.getDownloadedFiles() + ' / ' + event.getTotalFiles();
-                this.panel.byteLabel.string = event.getDownloadedBytes() + ' / ' + event.getTotalBytes();
+                this.panel.byteLabel.string = this.bytesToSize(event.getDownloadedBytes()) + ' / ' + this.bytesToSize(event.getTotalBytes());
 
                 var msg = event.getMessage();
                 if (msg) {
@@ -200,6 +200,8 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
+        this.panel= myGlobal.UpdatePanel;
+        this.show();
         // Hot update is only available in Native build
         if (!cc.sys.isNative) {
             return;
@@ -277,5 +279,13 @@ cc.Class({
             this._am.setEventCallback(null);
             this._updateListener = null;
         }
+    },
+    //字节转换成单位
+    bytesToSize:function(bytes){
+        if(bytes === 0) return '0 B';
+        var k = 1024;
+        var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
     }
 });

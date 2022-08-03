@@ -6514,8 +6514,8 @@
       "__type__": "TypedArray",
       "ctor": "Float64Array",
       "array": [
-        247.693,
-        505.347,
+        283.003,
+        564.933,
         0,
         0,
         0,
@@ -6682,7 +6682,7 @@
         "__id__": 156
       }
     ],
-    "_active": false,
+    "_active": true,
     "_components": [],
     "_prefab": null,
     "_opacity": 255,
@@ -9253,7 +9253,7 @@
     "_srcBlendFactor": 770,
     "_dstBlendFactor": 771,
     "_spriteFrame": {
-      "__uuid__": "7b77bc59-05ac-4b31-8f9c-ddc72b501dd7"
+      "__uuid__": "5e70bda9-1f17-4526-a07e-9edaab0ce68a"
     },
     "_type": 0,
     "_sizeMode": 0,
@@ -9515,9 +9515,6 @@
       "__id__": 2
     },
     "_enabled": true,
-    "panel": {
-      "__id__": 210
-    },
     "manifestUrl": {
       "__uuid__": "fef899ee-2969-4339-a83c-5ca83cce12bb"
     },

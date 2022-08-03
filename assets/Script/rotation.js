@@ -1,9 +1,4 @@
-// Learn cc.Class:
-//  - https://docs.cocos.com/creator/manual/en/scripting/class.html
-// Learn Attribute:
-//  - https://docs.cocos.com/creator/manual/en/scripting/reference/attributes.html
-// Learn life-cycle callbacks:
-//  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
+
 var config = require("data");
 cc.Class({
     extends: cc.Component,
@@ -20,9 +15,7 @@ cc.Class({
         choos_label:{
             default:null,
             type:cc.Label
-        },
-        
-        
+        }, 
     },
     start () {
         this.choos_label.string='???';
@@ -76,10 +69,12 @@ cc.Class({
         }
     },
     onRestart:function(){
-        //cc.game.restart();
+        cc.audioEngine.stopAll();
+        cc.game.end();
         //cc.director.loadScene("third");
        
-        myGlobal.popupDlg.onShow("网络超时");
+        //myGlobal.popupDlg.onShow("网络超时");
+        
     }
 
 });
