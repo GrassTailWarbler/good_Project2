@@ -27,7 +27,7 @@ cc.Class({
 		this.fn2 = null;
 		this.m_bDelay = false; //是否延迟显示；
 		this.m_nDelay = 0; //延时时间
-		myGlobal.popupDlg = this;
+		
 	},
 	restart: function () {
 		// popupDlg.inst = this;
@@ -39,16 +39,20 @@ cc.Class({
 		this.node.active = false;
 	},
 	onLoad: function () {
-		this.node.active = false;
+		//this.node.active = true;
 		this.node.inst = this;
+		myGlobal.popupDlg = this;
+		this.node.active = false;
 	},
 
 	// 传入内容、关闭回调、模式（0只有确定 1确定取消）
 	onShow: function (content, fn1, fn2, _mode, delaySec) {
+		var stats = this.node.active;
+		this.node.active = true;
 		this.m_bDelay = false;
 		this.content.string = content||"";//g.lan_Mgr.getLanToLan(content) || "";
 		this.fn1 = fn1;
-		this.fn2 = fn2 || fn1; //觉得这样比较好点，更多的是双函数的
+		this.fn2 = fn2 ;
 		// 根据模式显示菜单
 		var mode = _mode || 0;
 		var t1 = (delaySec == null) ? 0 : ~~delaySec;
@@ -63,8 +67,7 @@ cc.Class({
 			this.m_nDelay = t1;
 			return;
 		}
-		var stats = this.node.active;
-		this.node.active = true;
+		
 		if (!stats) {
 			effect2_opit.setEffect(this.node, [0, 1]);
 		}

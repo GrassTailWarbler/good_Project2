@@ -34,12 +34,17 @@ cc.Class({
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this.panel.info.string = "Already up to date with the latest remote version.";
+                this.close();//已经更新到最新就隐藏
                 break;
             case jsb.EventAssetsManager.NEW_VERSION_FOUND:
                 this.panel.info.string = 'New version found, please try to update. (' + this._am.getTotalBytes() + ')';
                 this.panel.checkBtn.active = false;
                 this.panel.fileProgress.progress = 0;
                 this.panel.byteProgress.progress = 0;
+                //弹出窗口去热更新
+                //发现最新版本，是否更新
+                //不更新就退出游戏
+                myGlobal.popupDlg.onShow("发现最新版本,准备去更新......",this.updateShow,this.updateExit,1);
                 break;
             default:
                 return;
@@ -190,6 +195,7 @@ cc.Class({
         if (this.updateUI.active === true) {
             this.updateUI.active = false;
         }
+        cc.director.loadScene("roulette");
     },
     
     show: function () {
@@ -200,12 +206,17 @@ cc.Class({
 
     // use this for initialization
     onLoad: function () {
-        this.panel= myGlobal.UpdatePanel;
-        this.show();
+        
+        
+        // this.panel= myGlobal.UpdatePanel;
+        // myGlobal.hotUpdate =this;
+        // this.checkUpdate1();
         // Hot update is only available in Native build
         if (!cc.sys.isNative) {
             return;
         }
+        this.panel= myGlobal.UpdatePanel;
+        myGlobal.hotUpdate =this;
         this._storagePath = ((jsb.fileUtils ? jsb.fileUtils.getWritablePath() : '/') + 'remote-assets');
        
         //cc.log('Storage path for remote asset : ' + this._storagePath);
@@ -272,6 +283,8 @@ cc.Class({
         
         this.panel.fileProgress.progress = 0;
         this.panel.byteProgress.progress = 0;
+        this.checkUpdate();
+        
     },
 
     onDestroy: function () {
@@ -287,5 +300,17 @@ cc.Class({
         var sizes = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
         var i = Math.floor(Math.log(bytes) / Math.log(k));
         return (bytes / Math.pow(k, i)).toPrecision(3) + ' ' + sizes[i];
+    },
+    updateExit:function(){
+        cc.audioEngine.stopAll();
+        cc.game.end();
+    },
+    updateShow:function(){
+        myGlobal.hotUpdate.show();
+        myGlobal.hotUpdate.hotUpdate();
+    },
+    checkUpdate1:function(){
+        myGlobal.popupDlg.onShow("发现最新版本,准备去更新......",this.updateShow,this.updateExit,1);
     }
+    
 });

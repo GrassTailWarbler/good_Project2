@@ -12,7 +12,11 @@ cc.Class({
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-       cc.instantiate(this.popupDlgInit).parent=this.node;
+       this.init();
     },
+    init:function(){
+      //实例化弹窗节点
+      cc.instantiate(this.popupDlgInit).parent=this.node;
+    }
 
 });
