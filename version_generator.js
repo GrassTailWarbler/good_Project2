@@ -6,7 +6,7 @@ var manifest = {
     packageUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/',
     remoteManifestUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/project.manifest',
     remoteVersionUrl: 'https://grasstailwarbler.github.io/cocos_hotupdate/yaoyaole/version.manifest',
-    version: '1.0.6',
+    version: '1.0.7',
     assets: {},
     searchPaths: []
 };

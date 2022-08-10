@@ -31,6 +31,7 @@ cc.Class({
             case jsb.EventAssetsManager.ERROR_DOWNLOAD_MANIFEST:
             case jsb.EventAssetsManager.ERROR_PARSE_MANIFEST:
                 this.panel.info.string = "Fail to download manifest file, hot update skipped.";
+                myGlobal.popupDlg.onShow("加载热更新清单文件失败,退出热更新......",this.updateExit,this.updateExit,1);
                 break;
             case jsb.EventAssetsManager.ALREADY_UP_TO_DATE:
                 this.panel.info.string = "Already up to date with the latest remote version.";

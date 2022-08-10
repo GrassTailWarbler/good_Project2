@@ -23,6 +23,8 @@ cc.Class({
         this.save_angle=0;
         this.final_rotation=[];
         this.title_node_array=this.title_parent_node.children;
+        //保存到全局变量里,方便菜单自定义菜名
+        myGlobal.titleMenu = this.title_parent_node.children;
         for (var i = 0; i < this.title_node_array.length; ++i) {
             var attrs={node_id:i};
             this.title_node_array[i].attr(attrs);
@@ -71,9 +73,7 @@ cc.Class({
     onRestart:function(){
         cc.audioEngine.stopAll();
         cc.game.end();
-        //cc.director.loadScene("third");
        
-        //myGlobal.popupDlg.onShow("网络超时");
         
     }
 
